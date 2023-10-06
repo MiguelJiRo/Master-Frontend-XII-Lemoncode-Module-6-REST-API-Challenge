@@ -6,6 +6,7 @@ import { mapCharacterFromApiToVm, mapCharacterFromVmToApi } from './character.ma
 import { Lookup } from 'common/models';
 import { CharacterComponent } from './character.component';
 import { linkRoutes } from 'core/router';
+import { PaginationComponent } from 'common/components/pagination';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
   const [character, setCharacter] = React.useState<Character>(createEmptyCharacter());
@@ -33,5 +34,9 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   };
 
-  return <CharacterComponent character={character} onSave={handleSaveCharacter}/>;
+  return (
+    <>
+      <CharacterComponent character={character} onSave={handleSaveCharacter}/>
+    </>
+  );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CharacterEntityVm } from './character-collection.vm';
+import { CharacterEntityVm, DataEntityVm } from './character-collection.vm';
 import { getCharacterCollection } from './api';
-import { mapFromApiToVm } from './character-collection.mapper';
+import { mapFromApiToVm, mapDataCharactersFromApiToVm } from './character-collection.mapper';
 import { mapToCollection } from 'common/mappers';
 
 export const useCharacterCollection = () => {
@@ -9,10 +9,18 @@ export const useCharacterCollection = () => {
     []
   );
 
-  const loadCharacterCollection = () => {
-    getCharacterCollection().then((result) =>
+  const [dataCollection, setDataCollection] = React.useState<DataEntityVm>({
+    count: 1,
+    next: '',
+    pages: 1,
+    prev: '',
+  });
+
+  const loadCharacterCollection = (page: number) => {
+    getCharacterCollection(page).then((result) =>
     {
-      setCharacterCollection(mapToCollection(result, mapFromApiToVm))
+      setCharacterCollection(mapToCollection(result.results, mapFromApiToVm));
+      setDataCollection(mapDataCharactersFromApiToVm(result));
     }).catch(
       error => {
         setCharacterCollection([]);
@@ -20,5 +28,5 @@ export const useCharacterCollection = () => {
     );
   };
 
-  return { characterCollection, loadCharacterCollection };
+  return { characterCollection, dataCollection, loadCharacterCollection };
 };

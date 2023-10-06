@@ -17,12 +17,11 @@ interface Props {
   character: CharacterEntityVm;
   onDetail: (id: number) => void;
   onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
 }
 const auxiliarImagePath: string = 'https://rickandmortyapi.com/api/character/avatar/19.jpeg';
 
 export const CharacterCard: React.FunctionComponent<Props> = (props) => {
-  const { character, onDetail, onEdit, onDelete } = props;
+  const { character, onDetail, onEdit } = props;
 
   return (
     <Card>
@@ -52,9 +51,6 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
         </IconButton>
         <IconButton onClick={() => onEdit(character.id)}>
           <EditIcon />
-        </IconButton>
-        <IconButton onClick={() => onDelete(character.id)}>
-          <DeleteIcon />
         </IconButton>
       </CardActions>
     </Card>

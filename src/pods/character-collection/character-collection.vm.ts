@@ -6,3 +6,10 @@ export interface CharacterEntityVm {
   species: string;
   image: string;
 }
+
+export interface DataEntityVm {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
+}

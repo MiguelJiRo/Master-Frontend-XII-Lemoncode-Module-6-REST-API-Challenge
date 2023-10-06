@@ -4,13 +4,14 @@ import { CharacterCollectionComponent } from './character-collection.component';
 import { linkRoutes } from 'core/router';
 import { useNavigate } from 'react-router-dom';
 import { deleteCharacter } from 'pods/character/api';
+import { PaginationComponent } from 'common/components/pagination';
 
 export const CharacterCollectionContainer = () => {
   const navigate = useNavigate();
-  const { characterCollection, loadCharacterCollection } = useCharacterCollection();
+  const { characterCollection, dataCollection, loadCharacterCollection } = useCharacterCollection();
 
   React.useEffect(() => {
-    loadCharacterCollection();
+    loadCharacterCollection(1);
   }, []);
 
   const handleCreateCharacter = () => {
@@ -25,18 +26,23 @@ export const CharacterCollectionContainer = () => {
     navigate(linkRoutes.editCharacter(id.toString()));
   };
 
-  const handleDelete = async (id: number) => {
-    await deleteCharacter(id);
-    loadCharacterCollection();
+  const handleChangePage = (page: number) => {
+    loadCharacterCollection(page);
   };
 
   return (
-    <CharacterCollectionComponent
-      characterCollection={characterCollection}
-      onCreateCharacter={handleCreateCharacter}
-      onDetail={handleCharacterDetail}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-    />
+    <>
+      <CharacterCollectionComponent
+        characterCollection={characterCollection}
+        onCreateCharacter={handleCreateCharacter}
+        onDetail={handleCharacterDetail}
+        onEdit={handleEdit}
+      />
+      <footer>
+          <PaginationComponent 
+            totalPages={dataCollection.pages} 
+            onChangePage={handleChangePage} />
+      </footer>
+    </>
   );
 };
