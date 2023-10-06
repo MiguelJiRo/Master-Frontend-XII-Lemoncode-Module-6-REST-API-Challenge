@@ -12,7 +12,6 @@ export const PaginationComponent: React.FunctionComponent<Props> = (props) => {
     const [page, setPage] = React.useState(1);
 
     const handlePageChange = (event: any, value: number) => {
-        console.log('handlePageChange', value);
         setPage(value);
         onChangePage(value);
     };
