@@ -24,3 +24,8 @@ export const list = css`
     grid-template-columns: repeat(3, 1fr);
   }
 `;
+
+export const header = css`
+  flex: 1,
+  padding: 20,
+`;

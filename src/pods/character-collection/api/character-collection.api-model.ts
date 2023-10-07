@@ -1,4 +1,4 @@
-import { Character} from "pods/character/api";
+import { Character } from "pods/character/api";
 
 export interface FetchCharacterListResponse {
   info: {
@@ -6,6 +6,6 @@ export interface FetchCharacterListResponse {
     pages: number;
     next: string;
     prev: string;
-  },
+  };
   results: Character[];
 }

@@ -1,42 +1,41 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import { useDebounce } from 'use-debounce';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import { useDebounce } from "use-debounce";
 
 interface Props {
-    searchValue: string;
-    onChange: (value: string) => void;
-  }
+  onChange: (value: string) => void;
+}
 
 export const SearchComponent: React.FunctionComponent<Props> = (props) => {
-    const { searchValue, onChange } = props;
-    const [lastSearch, setLastSearch] = React.useState('Search');
-    const [debouncedFilter] = useDebounce(searchValue, 500);
+  const { onChange } = props;
+  const [lastSearch, setLastSearch] = React.useState("");
+  const [debouncedFilter] = useDebounce(lastSearch, 500);
 
-    const handleSearch = (event: any) => {
-        setLastSearch(event.target.value);
-    };
+  const handleSearch = (event: any) => {
+    console.log("search value =>", event.target.value);
+    setLastSearch(event.target.value);
+  };
 
-    React.useEffect(() => {
-        onChange(lastSearch);
-    }, [debouncedFilter])
+  React.useEffect(() => {
+    onChange(lastSearch);
+  }, [debouncedFilter]);
 
-    return (
-        <>
-            <TextField
-              label="Search"
-              placeholder={lastSearch}
-              multiline
-              onChange={(e) => {
-                handleSearch(e.target.value);
-                setLastSearch(e.target.value)
-              }}
-              value={searchValue}
-            />
-            <IconButton onClick={handleSearch} title="">
-              <SearchIcon />
-            </IconButton>
-        </>
-      );
+  return (
+    <>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <TextField
+          label="Search something..."
+          placeholder={lastSearch}
+          multiline
+          onChange={handleSearch}
+          value={lastSearch}
+        />
+        <IconButton onClick={handleSearch} title="">
+          <SearchIcon />
+        </IconButton>
+      </div>
+    </>
+  );
 };
