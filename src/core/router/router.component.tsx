@@ -1,13 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { switchRoutes } from './routes';
-import { CharacterCollectionScene, CharacterScene } from 'scenes';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  HashRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { switchRoutes } from "./routes";
+import {
+  CharacterCollectionScene,
+  CharacterScene,
+  LocationCollectionScene,
+} from "scenes";
 
 export const RouterComponent: React.FunctionComponent = () => {
   return (
     <Router>
       <Routes>
-      <Route
+        <Route
           path={switchRoutes.root}
           element={<CharacterCollectionScene />}
         />
@@ -23,9 +33,10 @@ export const RouterComponent: React.FunctionComponent = () => {
           path={switchRoutes.createCharacter}
           element={<CharacterScene />}
         />
+        <Route path={switchRoutes.editCharacter} element={<CharacterScene />} />
         <Route
-          path={switchRoutes.editCharacter}
-          element={<CharacterScene />}
+          path={switchRoutes.locationCollection}
+          element={<LocationCollectionScene />}
         />
       </Routes>
     </Router>
