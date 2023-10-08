@@ -4,6 +4,7 @@ interface SwitchRoutes {
   root: string;
   characterCollection: string;
   locationCollection: string;
+  episodeCollection: string;
   characterDetail: string;
   createCharacter: string;
   editCharacter: string;
@@ -13,6 +14,7 @@ export const switchRoutes: SwitchRoutes = {
   root: "/",
   characterCollection: "/characters",
   locationCollection: "/locations",
+  episodeCollection: "/episodes",
   characterDetail: "/characters/:id",
   createCharacter: "/characters/create",
   editCharacter: "/characters/edit/:id",

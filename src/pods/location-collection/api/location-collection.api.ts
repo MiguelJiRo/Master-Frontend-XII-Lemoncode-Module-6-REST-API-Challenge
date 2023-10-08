@@ -1,7 +1,4 @@
-import {
-  FetchLocationListResponse,
-  Location,
-} from "./location-collection.api-model";
+import { FetchLocationListResponse } from "./location-collection.api-model";
 
 const url = "https://rickandmortyapi.com/api/location/?page=";
 

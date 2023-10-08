@@ -28,7 +28,7 @@ export const AppLayout: React.FC<Props> = (props) => {
   };
 
   const handleNavigateEpisodesPage = () => {
-    navigate(linkRoutes.locationCollection);
+    navigate(linkRoutes.episodeCollection);
   };
 
   return (
@@ -52,7 +52,7 @@ export const AppLayout: React.FC<Props> = (props) => {
           <Button
             variant="contained"
             startIcon={<AutoStoriesIcon />}
-            onClick={handleNavigateLocationsPage}
+            onClick={handleNavigateEpisodesPage}
           >
             Episodes
           </Button>
