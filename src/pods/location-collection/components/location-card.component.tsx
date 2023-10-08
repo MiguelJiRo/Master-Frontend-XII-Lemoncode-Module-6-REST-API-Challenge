@@ -12,6 +12,7 @@ interface Props {
 
 export const LocationCard: React.FunctionComponent<Props> = (props) => {
   const { location } = props;
+  const dateFormat = new Date(location.created).toLocaleString("es-ES");
 
   return (
     <Card>
@@ -19,7 +20,7 @@ export const LocationCard: React.FunctionComponent<Props> = (props) => {
       <CardContent>
         <div className={classes.content}>
           <Typography variant="subtitle1" gutterBottom>
-            Created: {location.created}
+            Created: {dateFormat}
           </Typography>
           <Typography variant="subtitle2" gutterBottom>
             Location: {location.dimension}

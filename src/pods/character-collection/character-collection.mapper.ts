@@ -1,11 +1,10 @@
-import * as apiModel from 'pods/character/api';
-import * as apiCollectionModel from './api';
-import * as viewModel from './character-collection.vm';
+import * as apiModel from "pods/character/api";
+import * as apiCollectionModel from "./api";
+import * as viewModel from "./character-collection.vm";
 
 export const mapFromApiToVm = (
   character: apiModel.Character
 ): viewModel.CharacterEntityVm => ({
-  bestSentences: character.bestSentences,
   id: character.id,
   name: character.name,
   status: character.status,
@@ -15,7 +14,7 @@ export const mapFromApiToVm = (
 
 export const mapDataCharactersFromApiToVm = (
   data: apiCollectionModel.FetchCharacterListResponse
-  ): viewModel.DataEntityVm => ({
+): viewModel.DataEntityVm => ({
   count: data.info.count,
   next: data.info.next,
   pages: data.info.pages,

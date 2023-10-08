@@ -21,16 +21,8 @@ export const CharacterCollectionContainer = () => {
     loadCharacterCollection(1, searchValue);
   }, [searchValue]);
 
-  const handleCreateCharacter = () => {
-    navigate(linkRoutes.createCharacter);
-  };
-
   const handleCharacterDetail = (id: number) => {
     navigate(linkRoutes.characterDetail(id.toString()));
-  };
-
-  const handleEdit = (id: number) => {
-    navigate(linkRoutes.editCharacter(id.toString()));
   };
 
   const handleChangePage = (page: number) => {
@@ -46,24 +38,15 @@ export const CharacterCollectionContainer = () => {
       <header
         style={{
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
           padding: "0.5rem",
         }}
       >
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleCreateCharacter}
-        >
-          Add Character
-        </Button>
         <SearchComponent onChange={handleSearch} />
       </header>
       <CharacterCollectionComponent
         characterCollection={characterCollection}
         onDetail={handleCharacterDetail}
-        onEdit={handleEdit}
       />
       <footer
         style={{

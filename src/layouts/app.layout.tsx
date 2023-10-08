@@ -34,7 +34,15 @@ export const AppLayout: React.FC<Props> = (props) => {
   return (
     <>
       <AppBar position="static">
-        <Toolbar variant="dense">
+        <Toolbar
+          variant="dense"
+          style={{
+            display: "flex",
+            alignItems: "left",
+            padding: "1rem",
+            gap: "1rem",
+          }}
+        >
           <Button
             variant="contained"
             startIcon={<GroupsIcon />}

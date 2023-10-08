@@ -1,68 +1,124 @@
-import React from 'react';
-import { Formik, Form } from 'formik';
-import Button from '@mui/material/Button';
-import {
-  TextFieldComponent,
-  SelectComponent,
-  RatingComponent,
-} from 'common/components';
-import { Lookup } from 'common/models';
-import { formValidation } from './character.validations';
-import { Character } from './character.vm';
-import * as classes from './character.styles';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import { linkRoutes } from 'core/router';
-import { useNavigate } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import SaveIcon from '@mui/icons-material/Save';
-import { Box } from '@mui/material';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import React from "react";
+import Button from "@mui/material/Button";
+import { Character } from "./character.vm";
+import { linkRoutes } from "core/router";
+import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import TextField from "@mui/material/TextField";
+import Avatar from "@mui/material/Avatar";
 
 interface Props {
   character: Character;
-  onSave: (character: Character) => void;
 }
 
 export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
-  const { character, onSave } = props;
+  const { character } = props;
   const navigate = useNavigate();
 
   return (
-      <Formik
-        onSubmit={onSave}
-        initialValues={character}
-        enableReinitialize={true}
-        validate={formValidation.validateForm}
+    <Box
+      component="form"
+      sx={{
+        "& .MuiTextField-root": { m: 1, width: "25ch" },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "left",
+          padding: "0.5rem",
+        }}
       >
-        {() => (
-          <Form className={classes.root}>
-            <TextFieldComponent name="name" label="Name" />
-            <TextFieldComponent name="status" label="Status" />
-            <TextFieldComponent name="species" label="Species" />
-            <TextFieldComponent name="type" label="Type" />
-            <TextFieldComponent name="gender" label="Gender" />
-            <TextFieldComponent name="origin" label="Origin" />
-            <TextFieldComponent name="location" label="Location" />
-            <TextFieldComponent name="bestSentences" label="Best Sentences" />
-            <Box
-              m={1}
-              display="flex"
-              justifyContent="flex-end"
-              alignItems="flex-end">       
-              <Button variant="outlined" startIcon={<CancelOutlinedIcon />} onClick={() => {navigate(linkRoutes.characterCollection);}} sx={{ height: 40 }}>
-                Cancel
-              </Button>    
-              <Button type="submit" variant="contained" startIcon={<SaveIcon />} color="primary" sx={{ height: 40 }}>
-                Save
-              </Button>
-            </Box>
-          </Form>
-        )}
-      </Formik>
+        <Avatar
+          alt="Remy Sharp"
+          src={character.image}
+          sx={{ width: 56, height: 56 }}
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="name"
+          value={character.name}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="status"
+          value={character.status}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="species"
+          value={character.species}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="type"
+          value={character.type}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="gender"
+          value={character.gender}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="origin"
+          value={character.origin}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="location"
+          value={character.location}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <Box
+          m={1}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="flex-end"
+        >
+          <Button
+            variant="outlined"
+            startIcon={<CancelOutlinedIcon />}
+            onClick={() => {
+              navigate(linkRoutes.characterCollection);
+            }}
+            sx={{ height: 40 }}
+          >
+            Return
+          </Button>
+        </Box>
+      </div>
+    </Box>
   );
 };

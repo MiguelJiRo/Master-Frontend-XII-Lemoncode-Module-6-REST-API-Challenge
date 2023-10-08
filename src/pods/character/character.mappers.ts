@@ -1,11 +1,10 @@
-import * as apiModel from './api/character.api-model';
-import * as viewModel from './character.vm';
+import * as apiModel from "./api/character.api-model";
+import * as viewModel from "./character.vm";
 
 export const mapCharacterFromApiToVm = (
   character: apiModel.Character
 ): viewModel.Character => ({
   ...character,
-  bestSentences: character.bestSentences,
   id: character.id,
   name: character.name,
   status: character.status,
@@ -17,10 +16,11 @@ export const mapCharacterFromApiToVm = (
   image: character.image,
 });
 
-export const mapCharacterFromVmToApi = (character: viewModel.Character): apiModel.Character =>
-  (({
+export const mapCharacterFromVmToApi = (
+  character: viewModel.Character
+): apiModel.Character =>
+  ({
     ...character,
-    bestSentences: character.bestSentences,
     id: character.id,
     name: character.name,
     status: character.status,
@@ -28,10 +28,10 @@ export const mapCharacterFromVmToApi = (character: viewModel.Character): apiMode
     type: character.type,
     gender: character.gender,
     origin: {
-    name: character.origin
+      name: character.origin,
     },
     location: {
-      name: character.location
+      name: character.location,
     },
     image: character.image,
-  } as unknown) as apiModel.Character);
+  } as unknown as apiModel.Character);

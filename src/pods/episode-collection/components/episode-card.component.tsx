@@ -12,10 +12,11 @@ interface Props {
 
 export const EpisodeCard: React.FunctionComponent<Props> = (props) => {
   const { episode } = props;
+  const dateFormat = new Date(episode.created).toLocaleString("es-ES");
 
   return (
     <Card>
-      <CardHeader title={episode.name} subheader={episode.created} />
+      <CardHeader title={episode.name} subheader={dateFormat} />
       <CardContent>
         <div className={classes.content}>
           <Typography variant="subtitle1" gutterBottom>

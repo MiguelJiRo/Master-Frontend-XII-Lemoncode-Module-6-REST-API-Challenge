@@ -1,5 +1,4 @@
 export interface Character {
-  bestSentences: string,
   id: number;
   name: string;
   status: string;

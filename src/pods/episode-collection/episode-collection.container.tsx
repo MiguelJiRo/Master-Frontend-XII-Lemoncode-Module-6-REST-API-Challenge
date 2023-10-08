@@ -34,7 +34,6 @@ export const EpisodeCollectionContainer = () => {
       <header
         style={{
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
           padding: "0.5rem",
         }}
